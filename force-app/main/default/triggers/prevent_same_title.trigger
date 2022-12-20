@@ -1,3 +1,4 @@
+//EJERCICIO 2
 trigger prevent_same_title on Work_Item__c (before insert, before update) {
     for(Work_Item__c wi1 : Trigger.new){
         //GET THE PROJECT ID
