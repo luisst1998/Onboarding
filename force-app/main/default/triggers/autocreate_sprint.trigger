@@ -1,3 +1,4 @@
+//EJERCICIO 2
 trigger autocreate_sprint on Project__c (after insert) {
     List<sprint__c> sprintList = new List<sprint__c>();
     for (Project__c p : Trigger.new) {
