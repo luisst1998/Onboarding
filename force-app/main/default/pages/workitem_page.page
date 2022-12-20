@@ -1,0 +1,21 @@
+<apex:page controller="workitem_controller">
+    <apex:form >
+        <label>Select status:</label>
+        <apex:outputpanel id="workItems">
+            <apex:selectList size="1" value="{!statusselected}" >
+                <apex:selectOptions value="{!status}"/>
+                <apex:actionSupport event="onchange" rerender="s"/>
+            </apex:selectList>
+        </apex:outputpanel>
+        <br/>
+        <br/>
+        <apex:pageBlock title="Work Item List" id="s">
+            <apex:pageBlockTable value="{! workItems }" var="wi">
+                <apex:column value="{! wi.Id }"/>
+                <apex:column value="{! wi.Name }"/>
+                <apex:column value="{! wi.Story_Points__c }"/>
+                <apex:column value="{! wi.Status__c }"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
