@@ -35,7 +35,7 @@ public class workitem_controller {
          List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
          pickListValuesList.add(new SelectOption('%%','All'));
          for( Schema.PicklistEntry pickListVal : ple){
-             pickListValuesList.add(new SelectOption(pickListVal.getLabel(),pickListVal.getLabel()));
+            pickListValuesList.add(new SelectOption(pickListVal.getLabel(),pickListVal.getLabel()));
          }     
          return pickListValuesList;
     }
