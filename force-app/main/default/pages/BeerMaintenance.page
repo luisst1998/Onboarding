@@ -1,0 +1,33 @@
+<apex:page controller="BeerController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton value="Previous" action="{!Previous}" rerender="pagination,beerslist"/>
+            <apex:outputText value="Page number ({!pagination})" id="pagination" style="padding: 10px"/>
+            <apex:commandButton value="Next" action="{!Next}" rerender="pagination,beerslist"/>
+        </apex:pageBlock>
+        <br/>
+        <apex:pageBlock title="BEERS LIST" id="beerslist">
+            <apex:commandButton value="Save all from this page" action="{!SaveAll}"/>
+            <br/>
+            <br/>
+            <apex:pageBlockTable value="{! beers }" var="bl">
+                <apex:column value="{! bl.Externalid__c }"/>
+                <apex:column value="{! bl.Name }"/>
+                <apex:column value="{! bl.Tagline__c }"/>
+                <apex:column value="{! bl.Description__c }"/>
+                <apex:column >
+                    <apex:outputPanel rendered="{!bl.Status__c == 'Not saved'}">
+                        
+                        <apex:commandLink value="Save" action="{!insertbeer}">
+                            <apex:param name="externalid" value="{!bl.Externalid__c}" assignTo="{!externalid}" />
+                        </apex:commandLink>
+                        
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!bl.Status__c == 'Saved'}">
+                        <apex:outputText value="Registered"/>
+                    </apex:outputPanel>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
